@@ -1,0 +1,66 @@
+begin
+
+/* declarations and initilizations of variables. */
+
+high = 0
+incline = 0
+fly= false
+acceleration = 0
+photo_flash = true
+
+make_one(a){
+a=1
+}
+
+time = reading_time()
+
+connect_computer()
+
+
+/*while statement example, if height >0 make fly variable true*/
+while( high > 0 ){
+
+	fly = true
+	incline = read_incline()
+	acceleration = read_acceleration()
+
+}
+
+/*if example, if drone is not flying make time = 0 and incline=0*/
+if(fly == false){#
+
+	time = 0
+	incline = 0
+	height = 0
+	acceleration = 0
+	photo_flash = false
+
+#}
+
+/*if stmt - if incline is too much or time greater than 200 make fly false*/
+if(incline > 5 | time >200){#
+	fly = false
+#}
+
+time = reading_time()
+/*for statement example, camera will take a picture in every 5 seconds and*/
+for(i = 0; i< 200 ;i = i+ 1){
+	time = time + 1
+	/*drone will move 10 meter right in every 5 seconds*/
+
+	if(time % 5 == 0){#
+
+		photo_flash = true
+
+		hepout(" time is: " + time)
+		take_picture()
+
+	#}
+	else{#
+		photo_flash = false	
+
+	#}
+
+}
+
+end
